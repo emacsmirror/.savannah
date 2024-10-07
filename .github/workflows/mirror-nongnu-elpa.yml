@@ -1,0 +1,39 @@
+name: 'Mirror NonGNU ELPA'
+permissions: {}
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '24 * * * *'
+jobs:
+  mirror:
+    name: 'Mirror NonGNU ELPA'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Create repository'
+        run: |
+          git init --bare -b main nongnu.git
+
+      - name: 'Configure refspec'
+        working-directory: nongnu.git
+        run: |
+          git config set remote.r.url https://github.com/emacsmirror/nongnu_elpa
+          git config set remote.r.fetch +refs/heads/main:refs/heads/main
+          git config set --append remote.r.fetch +refs/heads/elpa-release/*:refs/heads/elpa-release/*
+          git config set --append remote.r.fetch +refs/heads/elpa/*:refs/heads/elpa/*
+          git config set --append remote.r.fetch ^refs/heads/elpa/coffee-mode
+
+      - name: 'Pull from mirror'
+        working-directory: nongnu.git
+        run: |
+          git fetch --no-tags r
+
+      - name: 'Pull from upstream'
+        working-directory: nongnu.git
+        run: |
+          git remote set-url r https://git.savannah.gnu.org/git/emacs/nongnu.git
+          git fetch --no-tags r
+
+      - name: 'Push to mirror'
+        working-directory: nongnu.git
+        run: |
+          git push --mirror https://${{ secrets.SAVANNAH_MIRROR_TOKEN }}@github.com/emacsmirror/nongnu_elpa

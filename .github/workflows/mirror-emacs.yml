@@ -1,0 +1,40 @@
+name: 'Mirror GNU Emacs'
+permissions: {}
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '42 * * * *'
+jobs:
+  mirror:
+    name: 'Mirror GNU Emacs'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Create repository'
+        run: |
+          git init --bare -b master emacs.git
+
+      - name: 'Configure refspec'
+        working-directory: emacs.git
+        run: |
+          git config set remote.r.url https://github.com/emacsmirror/emacs
+          git config set remote.r.fetch +refs/heads/master:refs/heads/master
+          git config set --append remote.r.fetch +refs/heads/emacs-*:refs/heads/emacs-*
+          git config set --append remote.r.fetch +refs/tags/emacs-1*:refs/tags/emacs-1*
+          git config set --append remote.r.fetch +refs/tags/emacs-2*:refs/tags/emacs-2*
+          git config set --append remote.r.fetch +refs/tags/emacs-3*:refs/tags/emacs-3*
+
+      - name: 'Pull from mirror'
+        working-directory: emacs.git
+        run: |
+          git fetch --no-tags r
+
+      - name: 'Pull from upstream'
+        working-directory: emacs.git
+        run: |
+          git remote set-url r https://git.savannah.gnu.org/git/emacs.git
+          git fetch --no-tags r
+
+      - name: 'Push to mirror'
+        working-directory: emacs.git
+        run: |
+          git push --mirror https://${{ secrets.SAVANNAH_MIRROR_TOKEN }}@github.com/emacsmirror/emacs

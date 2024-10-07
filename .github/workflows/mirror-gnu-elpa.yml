@@ -1,0 +1,40 @@
+name: 'Mirror GNU ELPA'
+permissions: {}
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '33 * * * *'
+jobs:
+  mirror:
+    name: 'Mirror GNU ELPA'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Create repository'
+        run: |
+          git init --bare -b main elpa.git
+
+      - name: 'Configure refspec'
+        working-directory: elpa.git
+        run: |
+          git config set remote.r.url https://github.com/emacsmirror/gnu_elpa
+          git config set remote.r.fetch +refs/heads/main:refs/heads/main
+          git config set --append remote.r.fetch +refs/heads/elpa-admin:refs/heads/elpa-admin
+          git config set --append remote.r.fetch +refs/heads/externals-release/*:refs/heads/externals-release/*
+          git config set --append remote.r.fetch +refs/heads/externals/*:refs/heads/externals/*
+
+      - name: 'Pull from mirror'
+        working-directory: elpa.git
+        run: |
+          git fetch --no-tags r
+
+      - name: 'Pull from upstream'
+        working-directory: elpa.git
+        run: |
+          git remote set-url r https://git.savannah.gnu.org/git/emacs/elpa.git
+          git fetch --no-tags r
+
+      - name: 'Push to mirror'
+        working-directory: elpa.git
+        run: |
+          git push --mirror https://${{ secrets.SAVANNAH_MIRROR_TOKEN }}@github.com/emacsmirror/gnu_elpa
+
