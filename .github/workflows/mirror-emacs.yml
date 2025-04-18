@@ -38,3 +38,13 @@ jobs:
         working-directory: emacs.git
         run: |
           git push --mirror https://${{ secrets.SAVANNAH_MIRROR_TOKEN }}@github.com/emacsmirror/emacs
+          echo "emacs_head=$(git show --no-patch --format=%H)" >> $GITHUB_ENV
+
+      - name: 'Update log'
+        run: |
+          git clone --single-branch --branch log https://${{ secrets.SAVANNAH_MIRROR_TOKEN }}@github.com/emacsmirror/.savannah
+          cd .savannah
+          git config user.name "Automated mirroring"
+          git config user.email "bot@ci"
+          git commit --allow-empty -m "Updated Emacs master to ${{ env.emacs_head }}"
+          git push https://${{ secrets.SAVANNAH_MIRROR_TOKEN }}@github.com/emacsmirror/.savannah log:log
