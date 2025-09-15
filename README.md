@@ -29,6 +29,7 @@ repositories.
 - GNU Emacs
 
   ```
+  +refs/heads/master:refs/heads/master
   +refs/heads/emacs-*:refs/heads/emacs-*
   +refs/tags/emacs-1*:refs/tags/emacs-1*
   +refs/tags/emacs-2*:refs/tags/emacs-2*
