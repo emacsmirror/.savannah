@@ -31,6 +31,7 @@ repositories.
   ```
   +refs/heads/master:refs/heads/master
   +refs/heads/emacs-*:refs/heads/emacs-*
+  +refs/heads/feature/igc:refs/heads/feature/igc
   +refs/tags/emacs-1*:refs/tags/emacs-1*
   +refs/tags/emacs-2*:refs/tags/emacs-2*
   +refs/tags/emacs-3*:refs/tags/emacs-3*
