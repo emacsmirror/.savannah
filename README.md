@@ -1,7 +1,8 @@
-# Mirrors of GNU Emacs, GNU ELPA and NonGNU ELPA
+## Mirrors of GNU Emacs, GNU ELPA and NonGNU ELPA
 
 This repository contains the tooling used to mirror these three repositories
-from [Savannah](https://savannah.gnu.org) to GitHub.
+from [Savannah](https://savannah.gnu.org) to GitHub.  The mirror repositories
+are updated hourly.
 
 |                 | Upstream Repository                               | Mirror Repository                                                     |
 |-----------------|---------------------------------------------------|-----------------------------------------------------------------------|
@@ -14,44 +15,41 @@ and a [usage](https://savannah.gnu.org/git/?group=emacs) page for Emacs; and a
 [project](https://savannah.gnu.org/projects/elpa/) and a
 [usage](https://savannah.gnu.org/git/?group=elpa) page for the ELPAs.
 
-> [!NOTE]
-> These mirrors are updated hourly.
-
 > [!IMPORTANT]
-> Not all branches are included in these mirrors.
+> Not all branches are included in the mirror repositories.
 >
 > Note in particular that NonGNU ELPA's `elpa/coffee-mode`
-> branch is omitted because it is corrupted,
+> branch is omitted because it is corrupted;
 > see [defunkt/coffee-mode#367](https://github.com/defunkt/coffee-mode/issues/367)
 > and [debbugs#2365241](https://debbugs.gnu.org/cgi/bugreport.cgi?bug=bug%2365241).
 >
 > The following refspecs are used:
 
-- GNU Emacs
+#### GNU Emacs
 
-  ```
-  +refs/heads/master:refs/heads/master
-  +refs/heads/emacs-*:refs/heads/emacs-*
-  +refs/heads/feature/igc:refs/heads/feature/igc
-  +refs/tags/emacs-1*:refs/tags/emacs-1*
-  +refs/tags/emacs-2*:refs/tags/emacs-2*
-  +refs/tags/emacs-3*:refs/tags/emacs-3*
-  ```
+```
++refs/heads/master:refs/heads/master
++refs/heads/emacs-*:refs/heads/emacs-*
++refs/heads/feature/igc:refs/heads/feature/igc
++refs/tags/emacs-1*:refs/tags/emacs-1*
++refs/tags/emacs-2*:refs/tags/emacs-2*
++refs/tags/emacs-3*:refs/tags/emacs-3*
+```
 
-- GNU ELPA
+#### GNU ELPA
 
-  ```
-  +refs/heads/main:refs/heads/main
-  +refs/heads/elpa-admin:refs/heads/elpa-admin
-  +refs/heads/externals-release/*:refs/heads/externals-release/*
-  +refs/heads/externals/*:refs/heads/externals/*
-  ```
+```
++refs/heads/main:refs/heads/main
++refs/heads/elpa-admin:refs/heads/elpa-admin
++refs/heads/externals-release/*:refs/heads/externals-release/*
++refs/heads/externals/*:refs/heads/externals/*
+```
 
-- NonGNU ELPA
+#### NonGNU ELPA
 
-  ```
-  +refs/heads/main:refs/heads/main
-  +refs/heads/elpa-release/*:refs/heads/elpa-release/*
-  +refs/heads/elpa/*:refs/heads/elpa/*
-  ^refs/heads/elpa/coffee-mode
-  ```
+```
++refs/heads/main:refs/heads/main
++refs/heads/elpa-release/*:refs/heads/elpa-release/*
++refs/heads/elpa/*:refs/heads/elpa/*
+^refs/heads/elpa/coffee-mode
+```
