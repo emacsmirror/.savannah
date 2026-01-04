@@ -45,7 +45,7 @@ jobs:
         run: |
           git clone --single-branch --branch log https://${{ secrets.SAVANNAH_MIRROR_TOKEN }}@github.com/emacsmirror/.savannah
           cd .savannah
-          git config user.name "Automated mirroring"
-          git config user.email "bot@ci"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit --allow-empty -m "Updated Emacs master to ${{ env.emacs_head }}"
           git push https://${{ secrets.SAVANNAH_MIRROR_TOKEN }}@github.com/emacsmirror/.savannah log:log
