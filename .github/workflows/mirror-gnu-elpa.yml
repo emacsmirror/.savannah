@@ -30,7 +30,7 @@ jobs:
       - name: 'Pull from upstream'
         working-directory: elpa.git
         run: |
-          git remote set-url r https://git.savannah.gnu.org/git/emacs/elpa.git
+          git remote set-url r https://git.savannah.gnu.org/git/elpa/gnu.git
           git fetch --no-tags r
 
       - name: 'Push to mirror'

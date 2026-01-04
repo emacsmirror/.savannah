@@ -3,15 +3,16 @@
 This repository contains the tooling used to mirror these three repositories
 from [Savannah](https://savannah.gnu.org) to GitHub.
 
-|                 | Upstream Repository                                | Mirror Repository                                                     |
-| --------------- | -------------------------------------------------- | --------------------------------------------------------------------- |
-| **GNU Emacs**   | https://git.savannah.gnu.org/cgit/emacs.git        | [emacsmirror/emacs](https://github.com/emacsmirror/emacs)             |
-| **GNU ELPA**    | https://git.savannah.gnu.org/cgit/emacs/elpa.git   | [emacsmirror/gnu_elpa](https://github.com/emacsmirror/gnu_elpa)       |
-| **NonGNU ELPA** | https://git.savannah.gnu.org/cgit/emacs/nongnu.git | [emacsmirror/nongnu_elpa](https://github.com/emacsmirror/nongnu_elpa) |
+|                 | Upstream Repository                               | Mirror Repository                                                     |
+|-----------------|---------------------------------------------------|-----------------------------------------------------------------------|
+| **GNU Emacs**   | https://git.savannah.gnu.org/cgit/emacs.git       | [emacsmirror/emacs](https://github.com/emacsmirror/emacs)             |
+| **GNU ELPA**    | https://git.savannah.gnu.org/cgit/elpa/gnu.git    | [emacsmirror/gnu_elpa](https://github.com/emacsmirror/gnu_elpa)       |
+| **NonGNU ELPA** | https://git.savannah.gnu.org/cgit/elpa/nongnu.git | [emacsmirror/nongnu_elpa](https://github.com/emacsmirror/nongnu_elpa) |
 
-Savannah has a [project](https://savannah.gnu.org/projects/emacs/) and a
-[usage](https://savannah.gnu.org/git/?group=emacs) page for this group of
-repositories.
+Additionally Savannah has a [project](https://savannah.gnu.org/projects/emacs/)
+and a [usage](https://savannah.gnu.org/git/?group=emacs) page for Emacs; and a
+[project](https://savannah.gnu.org/projects/elpa/) and a
+[usage](https://savannah.gnu.org/git/?group=elpa) page for the ELPAs.
 
 > [!NOTE]
 > These mirrors are updated hourly.
