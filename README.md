@@ -15,6 +15,12 @@ and a [usage](https://savannah.gnu.org/git/?group=emacs) page for Emacs; and a
 [project](https://savannah.gnu.org/projects/elpa/) and a
 [usage](https://savannah.gnu.org/git/?group=elpa) page for the ELPAs.
 
+> [!NOTE]
+>
+> For inquiries about this repository and the repositories updated by the
+> actions defined here, please use
+> [emacsmirror/.github/issues](https://github.com/emacsmirror/.github/issues).
+
 > [!IMPORTANT]
 > Not all branches are included in the mirror repositories.
 >
