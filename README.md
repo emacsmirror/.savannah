@@ -36,7 +36,7 @@ and a [usage](https://savannah.gnu.org/git/?group=emacs) page for Emacs; and a
 ```
 +refs/heads/master:refs/heads/master
 +refs/heads/emacs-*:refs/heads/emacs-*
-+refs/heads/feature/igc:refs/heads/feature/igc
++refs/heads/feature/igc3:refs/heads/feature/igc3
 +refs/tags/emacs-1*:refs/tags/emacs-1*
 +refs/tags/emacs-2*:refs/tags/emacs-2*
 +refs/tags/emacs-3*:refs/tags/emacs-3*

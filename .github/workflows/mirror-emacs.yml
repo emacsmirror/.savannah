@@ -19,7 +19,7 @@ jobs:
           git config set remote.r.url https://github.com/emacsmirror/emacs
           git config set remote.r.fetch +refs/heads/master:refs/heads/master
           git config set --append remote.r.fetch +refs/heads/emacs-*:refs/heads/emacs-*
-          git config set --append remote.r.fetch +refs/heads/feature/igc:refs/heads/feature/igc
+          git config set --append remote.r.fetch +refs/heads/feature/igc3:refs/heads/feature/igc3
           git config set --append remote.r.fetch +refs/tags/emacs-1*:refs/tags/emacs-1*
           git config set --append remote.r.fetch +refs/tags/emacs-2*:refs/tags/emacs-2*
           git config set --append remote.r.fetch +refs/tags/emacs-3*:refs/tags/emacs-3*
