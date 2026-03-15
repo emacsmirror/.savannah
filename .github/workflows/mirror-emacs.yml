@@ -26,8 +26,15 @@ jobs:
 
       - name: 'Pull from mirror'
         working-directory: emacs.git
+        # When we add new branch by editing the above refspec
+        # list, then that ref does not exist on the mirror yet.
+        #
+        # This is documented at https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstepscontinue-on-error
+        # but if I do this I get an error "Unexpected value 'continue-or-error'".
+        # continue-or-error: true
+        # so instead use "... || true".
         run: |
-          git fetch --no-tags r
+          git fetch --no-tags r || true
 
       - name: 'Pull from upstream'
         working-directory: emacs.git
