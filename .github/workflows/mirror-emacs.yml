@@ -7,6 +7,8 @@ on:
 concurrency:
   group: schedule
   cancel-in-progress: true
+env:
+  TOKEN: ${{ secrets.SAVANNAH_MIRROR_TOKEN }}
 jobs:
   mirror:
     name: 'Mirror GNU Emacs'
@@ -48,14 +50,14 @@ jobs:
       - name: 'Push to mirror'
         working-directory: emacs.git
         run: |
-          git push --mirror https://${{ secrets.SAVANNAH_MIRROR_TOKEN }}@github.com/emacsmirror/emacs
+          git push --mirror https://${TOKEN}@github.com/emacsmirror/emacs
           echo "emacs_head=$(git show --no-patch --format=%H)" >> $GITHUB_ENV
 
       - name: 'Update log'
         run: |
-          git clone --single-branch --branch log https://${{ secrets.SAVANNAH_MIRROR_TOKEN }}@github.com/emacsmirror/.savannah
+          git clone --single-branch --branch log https://${TOKEN}@github.com/emacsmirror/.savannah
           cd .savannah
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit --allow-empty -m "Updated Emacs master to ${EMACS_HEAD}"
-          git push https://${{ secrets.SAVANNAH_MIRROR_TOKEN }}@github.com/emacsmirror/.savannah log:log
+          git push https://${TOKEN}@github.com/emacsmirror/.savannah log:log

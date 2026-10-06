@@ -7,6 +7,8 @@ on:
 concurrency:
   group: schedule
   cancel-in-progress: true
+env:
+  TOKEN: ${{ secrets.SAVANNAH_MIRROR_TOKEN }}
 jobs:
   mirror:
     name: 'Mirror NonGNU ELPA'
@@ -39,4 +41,4 @@ jobs:
       - name: 'Push to mirror'
         working-directory: nongnu.git
         run: |
-          git push --mirror https://${{ secrets.SAVANNAH_MIRROR_TOKEN }}@github.com/emacsmirror/nongnu_elpa
+          git push --mirror https://${TOKEN}@github.com/emacsmirror/nongnu_elpa
