@@ -4,6 +4,9 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '24 * * * *'
+concurrency:
+  group: schedule
+  cancel-in-progress: true
 jobs:
   mirror:
     name: 'Mirror NonGNU ELPA'
